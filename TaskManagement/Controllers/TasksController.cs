@@ -13,7 +13,11 @@ namespace TaskManagement.Controllers
     public class TasksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
+       
+        // GET: Projects
+        [Authorize(Roles = "Admin, Project Manager, Developer, Submitter")]
         // GET: Tasks
         public ActionResult Index()
         {
@@ -128,10 +132,12 @@ namespace TaskManagement.Controllers
             }
             base.Dispose(disposing);
         }
+        [Authorize(Roles = "Project Manager")]
         public ActionResult OrderByCompletedPercent()
         {
             return View(db.Tasks.OrderBy(percent => percent.CompletedPercent).ToList());
         }
+        [Authorize(Roles = "Project Manager, Developer")]
         public ActionResult AllHisTask(string MyTask)
         {
             string input = HttpUtility.HtmlEncode(MyTask);
