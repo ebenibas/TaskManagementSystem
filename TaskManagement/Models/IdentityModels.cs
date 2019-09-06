@@ -26,7 +26,8 @@ namespace TaskManagement.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
-       
+
+        public DateTime DeadLine { get; set; }
         public virtual ICollection<UserProject> ApplicationUsers { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
     }
@@ -52,9 +53,16 @@ namespace TaskManagement.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public DateTime DeadLine { get; set; }
         public double CompletedPercent { get; set; }
         public int ProjectId { get; set; }
         public virtual Project Project { get; set; }
+    }
+    public class Notification
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Dewscription { get; set; }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -62,6 +70,7 @@ namespace TaskManagement.Models
         public DbSet<Task> Tasks { get; set; }
         public DbSet<UserProject> UserProjects { get; set; }
         public DbSet<UserTask> UserTasks { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

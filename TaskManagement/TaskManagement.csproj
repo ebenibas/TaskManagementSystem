@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\UserProjectsController.cs" />
@@ -184,6 +185,14 @@
     <Compile Include="Migrations\201909061111201_AddCompletedPercent.cs" />
     <Compile Include="Migrations\201909061111201_AddCompletedPercent.Designer.cs">
       <DependentUpon>201909061111201_AddCompletedPercent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909061223083_AddDeadLine.cs" />
+    <Compile Include="Migrations\201909061223083_AddDeadLine.Designer.cs">
+      <DependentUpon>201909061223083_AddDeadLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909061226228_AddDeadLine1.cs" />
+    <Compile Include="Migrations\201909061226228_AddDeadLine1.Designer.cs">
+      <DependentUpon>201909061226228_AddDeadLine1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,6 +281,12 @@
     <Content Include="Views\UserTasks\Edit.cshtml" />
     <Content Include="Views\UserTasks\Index.cshtml" />
     <Content Include="Views\Tasks\OrderByCompletedPercent.cshtml" />
+    <Content Include="Views\Notifications\Create.cshtml" />
+    <Content Include="Views\Notifications\Delete.cshtml" />
+    <Content Include="Views\Notifications\Details.cshtml" />
+    <Content Include="Views\Notifications\Edit.cshtml" />
+    <Content Include="Views\Notifications\Index.cshtml" />
+    <Content Include="Views\Tasks\AllHisTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +310,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909061111201_AddCompletedPercent.resx">
       <DependentUpon>201909061111201_AddCompletedPercent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909061223083_AddDeadLine.resx">
+      <DependentUpon>201909061223083_AddDeadLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909061226228_AddDeadLine1.resx">
+      <DependentUpon>201909061226228_AddDeadLine1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,112 +10,107 @@ using TaskManagement.Models;
 
 namespace TaskManagement.Controllers
 {
-    public class TasksController : Controller
+    public class NotificationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Tasks
+        // GET: Notifications
         public ActionResult Index()
         {
-            var tasks = db.Tasks.Include(t => t.Project);
-            return View(tasks.ToList());
+            return View(db.Notifications.ToList());
         }
 
-        // GET: Tasks/Details/5
+        // GET: Notifications/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Task task = db.Tasks.Find(id);
-            if (task == null)
+            Notification notification = db.Notifications.Find(id);
+            if (notification == null)
             {
                 return HttpNotFound();
             }
-            return View(task);
+            return View(notification);
         }
 
-        // GET: Tasks/Create
+        // GET: Notifications/Create
         public ActionResult Create()
         {
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name");
             return View();
         }
 
-        // POST: Tasks/Create
+        // POST: Notifications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,ProjectId")] Task task)
+        public ActionResult Create([Bind(Include = "Id,Name,Dewscription")] Notification notification)
         {
             if (ModelState.IsValid)
             {
-                db.Tasks.Add(task);
+                db.Notifications.Add(notification);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", task.ProjectId);
-            return View(task);
+            return View(notification);
         }
 
-        // GET: Tasks/Edit/5
+        // GET: Notifications/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Task task = db.Tasks.Find(id);
-            if (task == null)
+            Notification notification = db.Notifications.Find(id);
+            if (notification == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", task.ProjectId);
-            return View(task);
+            return View(notification);
         }
 
-        // POST: Tasks/Edit/5
+        // POST: Notifications/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,ProjectId")] Task task)
+        public ActionResult Edit([Bind(Include = "Id,Name,Dewscription")] Notification notification)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(task).State = EntityState.Modified;
+                db.Entry(notification).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", task.ProjectId);
-            return View(task);
+            return View(notification);
         }
 
-        // GET: Tasks/Delete/5
+        // GET: Notifications/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Task task = db.Tasks.Find(id);
-            if (task == null)
+            Notification notification = db.Notifications.Find(id);
+            if (notification == null)
             {
                 return HttpNotFound();
             }
-            return View(task);
+            return View(notification);
         }
 
-        // POST: Tasks/Delete/5
+        // POST: Notifications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Task task = db.Tasks.Find(id);
-            db.Tasks.Remove(task);
+            Notification notification = db.Notifications.Find(id);
+            db.Notifications.Remove(notification);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -127,18 +122,6 @@ namespace TaskManagement.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-        public ActionResult OrderByCompletedPercent()
-        {
-            return View(db.Tasks.OrderBy(percent => percent.CompletedPercent).ToList());
-        }
-        public ActionResult AllHisTask(string MyTask)
-        {
-            string input = HttpUtility.HtmlEncode(MyTask);
-            var AllMyTask = db.UserTasks.Select(s => s.ApplicationUser.Email).Distinct().ToList();
-            ViewBag.CountryName = new SelectList(AllMyTask);
-            var filtedTask = db.UserTasks.Where(s => s.ApplicationUser.Email == input).ToList();
-            return View(filtedTask);
         }
     }
 }
