@@ -194,6 +194,10 @@
     <Compile Include="Migrations\201909061226228_AddDeadLine1.Designer.cs">
       <DependentUpon>201909061226228_AddDeadLine1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909090222543_AddProjectPriority.cs" />
+    <Compile Include="Migrations\201909090222543_AddProjectPriority.Designer.cs">
+      <DependentUpon>201909090222543_AddProjectPriority.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -260,16 +264,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Projects\Create.cshtml" />
-    <Content Include="Views\Projects\Delete.cshtml" />
-    <Content Include="Views\Projects\Details.cshtml" />
-    <Content Include="Views\Projects\Edit.cshtml" />
-    <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Tasks\Create.cshtml" />
-    <Content Include="Views\Tasks\Delete.cshtml" />
-    <Content Include="Views\Tasks\Details.cshtml" />
-    <Content Include="Views\Tasks\Edit.cshtml" />
-    <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\UserProjects\Create.cshtml" />
     <Content Include="Views\UserProjects\Delete.cshtml" />
     <Content Include="Views\UserProjects\Details.cshtml" />
@@ -280,12 +274,22 @@
     <Content Include="Views\UserTasks\Details.cshtml" />
     <Content Include="Views\UserTasks\Edit.cshtml" />
     <Content Include="Views\UserTasks\Index.cshtml" />
-    <Content Include="Views\Tasks\OrderByCompletedPercent.cshtml" />
     <Content Include="Views\Notifications\Create.cshtml" />
     <Content Include="Views\Notifications\Delete.cshtml" />
     <Content Include="Views\Notifications\Details.cshtml" />
     <Content Include="Views\Notifications\Edit.cshtml" />
     <Content Include="Views\Notifications\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Delete.cshtml" />
+    <Content Include="Views\Tasks\Details.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
+    <Content Include="Views\Tasks\Index.cshtml" />
+    <Content Include="Views\Tasks\OrderByCompletedPercent.cshtml" />
     <Content Include="Views\Tasks\AllHisTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909061226228_AddDeadLine1.resx">
       <DependentUpon>201909061226228_AddDeadLine1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909090222543_AddProjectPriority.resx">
+      <DependentUpon>201909090222543_AddProjectPriority.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,6 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeadLine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedPercent)
+        </th>
         <th></th>
     </tr>
 
@@ -33,6 +39,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeadLine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompletedPercent)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

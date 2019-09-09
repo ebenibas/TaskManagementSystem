@@ -13,9 +13,9 @@ namespace TaskManagement.Controllers
     public class TasksController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
 
-       
+
+
         // GET: Projects
         [Authorize(Roles = "Admin, Project Manager, Developer, Submitter")]
         // GET: Tasks

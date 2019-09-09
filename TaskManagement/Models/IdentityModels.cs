@@ -27,9 +27,14 @@ namespace TaskManagement.Models
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
 
+
         public DateTime DeadLine { get; set; }
+        public Priority ProjectPriority { get; set; }
         public virtual ICollection<UserProject> ApplicationUsers { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
+        public enum Priority {
+            High,average,low
+        }
     }
     public class UserProject
     {
