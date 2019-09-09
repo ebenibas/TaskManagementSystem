@@ -17,7 +17,7 @@ namespace TaskManagement.Controllers
 
 
         // GET: Projects
-        [Authorize(Roles = "Admin, Project Manager, Developer, Submitter")]
+        //[Authorize(Roles = "Project Manager, Developer")]
         // GET: Tasks
         public ActionResult Index()
         {
@@ -52,7 +52,7 @@ namespace TaskManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,ProjectId")] Task task)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,DeadLine,CompletedPercent,ProjectId")] Task task)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TaskManagement.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,ProjectId")] Task task)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,DeadLine,CompletedPercent,ProjectId")] Task task)
         {
             if (ModelState.IsValid)
             {
@@ -132,7 +132,7 @@ namespace TaskManagement.Controllers
             }
             base.Dispose(disposing);
         }
-        [Authorize(Roles = "Project Manager")]
+       // [Authorize(Roles = "Project Manager")]
         public ActionResult OrderByCompletedPercent()
         {
             return View(db.Tasks.OrderBy(percent => percent.CompletedPercent).ToList());
