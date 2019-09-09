@@ -291,6 +291,7 @@
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\OrderByCompletedPercent.cshtml" />
     <Content Include="Views\Tasks\AllHisTask.cshtml" />
+    <Content Include="Views\Projects\DashBoard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace TaskManagement.Controllers
 
 
         // GET: Projects
-        //[Authorize(Roles = "Project Manager, Developer")]
+        [Authorize(Roles = "Task Manager, Developer")]
         // GET: Tasks
         public ActionResult Index()
         {
@@ -132,7 +132,7 @@ namespace TaskManagement.Controllers
             }
             base.Dispose(disposing);
         }
-       // [Authorize(Roles = "Project Manager")]
+       [Authorize(Roles = "Project Manager")]
         public ActionResult OrderByCompletedPercent()
         {
             return View(db.Tasks.OrderBy(percent => percent.CompletedPercent).ToList());

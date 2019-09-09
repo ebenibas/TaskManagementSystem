@@ -1,16 +1,24 @@
-﻿@model IEnumerable<TaskManagement.Models.Project>
-    <a href="~/Views/Projects/Index.cshtml">~/Views/Projects/Index.cshtml</a>
+﻿
+
+@model IEnumerable<TaskManagement.Models.Project>
+
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "DashBoard";
 }
 
-<h2>Index</h2>
+<h2>DashBoard</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
+
+
+    @foreach (var item in Model)
+    {
     <tr>
+
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -24,10 +32,6 @@
             @Html.DisplayNameFor(model => model.ProjectPriority)
         </th>
         <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -40,12 +44,27 @@
         <td>
             @Html.DisplayFor(modelItem => item.ProjectPriority)
         </td>
+
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @foreach (var task in item.Tasks)
+            {
+                <div>
+                    @task.Name
+
+                </div>
+            }
+            @foreach (var userProject in item.ApplicationUsers)
+            {
+                <div>
+                    @userProject.ApplicationUser.Email
+                    @userProject.Project.Name
+
+                </div>
+            }
         </td>
+     
     </tr>
-}
+    }
 
 </table>

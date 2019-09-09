@@ -15,6 +15,7 @@ namespace TaskManagement.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
+        [Authorize(Roles = "Project Manager")]
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
@@ -122,6 +123,13 @@ namespace TaskManagement.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [Authorize(Roles = "Project Manager)]
+        public ActionResult DashBoard()
+        {
+
+  
+            return View(db.Projects.ToList());
         }
     }
 }
